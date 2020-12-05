@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ProductImport.Model;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ProductImport.Source.ISourceProvider
 {
-    interface IProduct
+    public interface IProduct
     {
-        public ReadFile()
+        public List<SoftwareAdviceModel> ReadFile();
     }
 }
