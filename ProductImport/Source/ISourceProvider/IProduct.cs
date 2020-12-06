@@ -7,6 +7,6 @@ namespace ProductImport.Source.ISourceProvider
 {
     public interface IProduct
     {
-        public List<SoftwareAdviceModel> ReadFile();
+        public void ReadFile(string path);
     }
 }

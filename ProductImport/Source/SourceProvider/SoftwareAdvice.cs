@@ -17,14 +17,16 @@ namespace ProductImport.Source.SourceProvider
             _iSoftwareAdviceRepository = iSoftwareAdviceRepository;
         }
 
-        public List<SoftwareAdviceModel> ReadFile()
+        public void ReadFile(string path)
         {
-            string fileName = "../feed-products/softwareadvice.json";
-            string jsonString = File.ReadAllText(fileName);
+            string jsonString = File.ReadAllText(path);
             var productData = JsonSerializer.Deserialize<SoftwareAdviceModelList>(jsonString);
-            var result = _iSoftwareAdviceRepository.AddProduct(null);
 
-            throw new NotImplementedException();
+            foreach (var item in productData.Products)
+            {
+                _iSoftwareAdviceRepository.AddProduct(item);
+                Console.WriteLine();
+            }
         }
     }
 }

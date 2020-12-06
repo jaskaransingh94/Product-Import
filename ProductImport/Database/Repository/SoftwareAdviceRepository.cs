@@ -16,9 +16,20 @@ namespace ProductImport.Database.Repository
         //    _mySqlContext = mySqlContext;
         //}
 
-        public bool AddProduct(SoftwareAdviceModel product)
+        public void AddProduct(SoftwareAdviceModel product)
         {
-            return true;
+            Console.WriteLine("Importing:");
+            Console.WriteLine($"Name: {product.Title}");
+            Console.Write("Categories: ");
+            foreach (var item in product.Categories)
+            {
+                if (item == product.Categories[product.Categories.Count - 1])
+                    Console.WriteLine(item);
+                else
+                    Console.Write(item + ",");
+            }
+            var twitter = product.Twitter == null ? "N.A." : product.Twitter;
+            Console.WriteLine($"Twitter: {twitter}");
         }
     }
 }

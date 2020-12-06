@@ -19,8 +19,32 @@ namespace ProductImport
                 .AddTransient<ISoftwareAdviceRepository, SoftwareAdviceRepository>()
                 .BuildServiceProvider();
 
-            var sa = serviceProvider.GetService<SoftwareAdvice>();
-            sa.ReadFile();
+            if (args.Length < 3)
+            {
+                Console.WriteLine("Please specify all the arguments");
+                return;
+            }
+
+            var source = args[1];
+            var path = args[2];
+
+            if (source.ToLower().Equals("capterra"))
+            {
+                var serviceType = serviceProvider.GetService<Capterra>();
+                //serviceType.ReadFile(path);
+            }
+            else if (source.ToLower().Equals("softwareadvice"))
+            {
+                var serviceType = serviceProvider.GetService<SoftwareAdvice>();
+                serviceType.ReadFile(path);
+            }
+            else
+            {
+                Console.WriteLine("Not a valid source");
+                return;
+            }
+
+            //import softwareadvice feed-products/softwareadvice.json
         }
     }
 }
