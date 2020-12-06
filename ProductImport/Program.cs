@@ -13,6 +13,8 @@ namespace ProductImport
         public static void Main(string[] args)
         {
             //setup our DI
+            //register our db context as well here 
+            //all this code will be in startup.cs in an actual app
             var serviceProvider = new ServiceCollection()
                 .AddTransient<Capterra>()
                 .AddTransient<SoftwareAdvice>()
@@ -20,20 +22,20 @@ namespace ProductImport
                 .AddTransient<ICapterraRepository, CapterraRepository>()
                 .BuildServiceProvider();
 
-            //if (args.Length < 3)
-            //{
-            //    Console.WriteLine("Please specify all the arguments");
-            //    return;
-            //}
+            if (args.Length < 3)
+            {
+                Console.WriteLine("Please specify all the arguments");
+                return;
+            }
 
-            //var source = args[1];
-            //var path = args[2];
+            var source = args[1];
+            var path = args[2];
 
             //var source = "capterra";
             //var path = "feed-products/capterra.yaml";
 
-            var source = "softwareadvice";
-            var path = "feed-products/softwareadvice.json";
+            //var source = "softwareadvice";
+            //var path = "feed-products/softwareadvice.json";
 
             if (source.ToLower().Equals("capterra"))
             {
