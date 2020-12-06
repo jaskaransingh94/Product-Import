@@ -25,7 +25,7 @@ group by first_name,last_name) as dummy where premium >= 1
 
 4. How much revenue has each active vendor made in 2013
 - Please return at least: first_name, last_name, currency, revenue
-select first_name,last_name,Isnull(currency,0) as currency,Isnull(sum(price),0) as revenue from users u 
+select first_name,last_name,Ifnull(currency,0) as currency,Ifnull(sum(price),0) as revenue from users u 
 left join listings l on u.id = l.user_id left join clicks c on c.listing_id = l.id 
 and Year(c.created) = '2013' where u.STATUS = 2 group by first_name,last_name,currency order by revenue desc
 
