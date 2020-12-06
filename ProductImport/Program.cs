@@ -17,26 +17,33 @@ namespace ProductImport
                 .AddTransient<Capterra>()
                 .AddTransient<SoftwareAdvice>()
                 .AddTransient<ISoftwareAdviceRepository, SoftwareAdviceRepository>()
+                .AddTransient<ICapterraRepository, CapterraRepository>()
                 .BuildServiceProvider();
 
-            if (args.Length < 3)
-            {
-                Console.WriteLine("Please specify all the arguments");
-                return;
-            }
+            //if (args.Length < 3)
+            //{
+            //    Console.WriteLine("Please specify all the arguments");
+            //    return;
+            //}
 
-            var source = args[1];
-            var path = args[2];
+            //var source = args[1];
+            //var path = args[2];
+
+            //var source = "capterra";
+            //var path = "feed-products/capterra.yaml";
+
+            var source = "softwareadvice";
+            var path = "feed-products/softwareadvice.json";
 
             if (source.ToLower().Equals("capterra"))
             {
                 var serviceType = serviceProvider.GetService<Capterra>();
-                //serviceType.ReadFile(path);
+                serviceType.ReadAndImport(path);
             }
             else if (source.ToLower().Equals("softwareadvice"))
             {
                 var serviceType = serviceProvider.GetService<SoftwareAdvice>();
-                serviceType.ReadFile(path);
+                serviceType.ReadAndImport(path);
             }
             else
             {
@@ -44,7 +51,7 @@ namespace ProductImport
                 return;
             }
 
-            //import softwareadvice feed-products/softwareadvice.json
+            //ProductImport.exe import softwareadvice feed-products/softwareadvice.json
         }
     }
 }

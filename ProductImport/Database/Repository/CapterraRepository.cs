@@ -7,20 +7,20 @@ using System.Text;
 
 namespace ProductImport.Database.Repository
 {
-    public class SoftwareAdviceRepository : ISoftwareAdviceRepository
+    public class CapterraRepository : ICapterraRepository
     {
         //private readonly MySqlContext _mySqlContext;
 
-        //public SoftwareAdviceRepository(MySqlContext mySqlContext)
+        //public CapterraRepository(MySqlContext mySqlContext)
         //{
         //    _mySqlContext = mySqlContext;
         //}
 
-        public void AddProduct(SoftwareAdviceModel product)
+        public void AddProduct(CapterraModel product)
         {
             Console.WriteLine("Importing:");
-            Console.WriteLine($"Name: {product.Title}");
-            Console.WriteLine($"Categories: {String.Join(",", product.Categories)}");
+            Console.WriteLine($"Name: {product.Name}");
+            Console.WriteLine($"Tags: {product.Tags}");
             Console.WriteLine($"Twitter: {product.Twitter}");
         }
     }

@@ -7,6 +7,6 @@ namespace ProductImport.Source.ISourceProvider
 {
     public interface IProduct
     {
-        public void ReadFile(string path);
+        public void ReadAndImport(string path);
     }
 }

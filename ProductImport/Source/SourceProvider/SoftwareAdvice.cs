@@ -8,7 +8,7 @@ using System.Text.Json;
 
 namespace ProductImport.Source.SourceProvider
 {
-    class SoftwareAdvice : IProduct
+    public class SoftwareAdvice : IProduct
     {
         private readonly ISoftwareAdviceRepository _iSoftwareAdviceRepository;
 
@@ -17,7 +17,7 @@ namespace ProductImport.Source.SourceProvider
             _iSoftwareAdviceRepository = iSoftwareAdviceRepository;
         }
 
-        public void ReadFile(string path)
+        public void ReadAndImport(string path)
         {
             string jsonString = File.ReadAllText(path);
             var productData = JsonSerializer.Deserialize<SoftwareAdviceModelList>(jsonString);
