@@ -19,7 +19,7 @@ namespace ProductImportTestCases
             _softwareAdviceSource = new SoftwareAdvice(new FakeSoftwareAdviceRepository());
         }
 
-        [TestCase("feed-products/softwareadvice1.json")]
+        [TestCase("../../.././../feed-products/softwareadvice1.json")]
         public void FileNotFound_ReturnError(string path)
         {
             Assert.Throws<FileNotFoundException>(() => _softwareAdviceSource.ReadFile(path));
@@ -31,7 +31,7 @@ namespace ProductImportTestCases
             Assert.Throws<ArgumentException>(() => _softwareAdviceSource.ReadFile(path));
         }
 
-        [TestCase("feed-products/softwareadvice.json")]
+        [TestCase("../../.././../feed-products/softwareadvice.json")]
         public void DataIsNotEmpty_ReturnData(string path)
         {
             var result = _softwareAdviceSource.ReadFile(path);

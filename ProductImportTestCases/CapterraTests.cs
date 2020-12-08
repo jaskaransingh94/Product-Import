@@ -19,7 +19,7 @@ namespace ProductImportTestCases
             _capterraSource = new Capterra(new FakeCapterraRepository());
         }
 
-        [TestCase("feed-products/capterra1.yaml")]
+        [TestCase("../../.././../feed-products/capterra1.yaml")]
         public void FileNotFound_ReturnError(string path)
         {
           Assert.Throws<FileNotFoundException>(() => _capterraSource.ReadFile(path));
@@ -31,7 +31,7 @@ namespace ProductImportTestCases
             Assert.Throws<ArgumentException>(() => _capterraSource.ReadFile(path));
         }
 
-        [TestCase("feed-products/capterra.yaml")]
+        [TestCase("../../.././../feed-products/capterra.yaml")]
         public void DataIsNotEmpty_ReturnData(string path)
         {
             var result = _capterraSource.ReadFile(path);
