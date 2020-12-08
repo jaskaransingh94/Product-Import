@@ -9,7 +9,7 @@ using YamlDotNet.Serialization;
 
 namespace ProductImport.Source.SourceProvider
 {
-    class Capterra : IProduct
+    public class Capterra : IProduct<CapterraModel>
     {
         private readonly ICapterraRepository _iCapterraRepository;
 
@@ -18,7 +18,7 @@ namespace ProductImport.Source.SourceProvider
             _iCapterraRepository = iCapterraRepository;
         }
 
-        public void ReadAndImport(string path)
+        public List<CapterraModel> ReadFile(string path)
         {
             //Read File to string
             string yamlString = File.ReadAllText(path);
@@ -34,11 +34,17 @@ namespace ProductImport.Source.SourceProvider
             //deserialize yaml to json object
             var productData = JsonConvert.DeserializeObject<List<CapterraModel>>(jsonString.ToString());
 
-            foreach (var item in productData)
-            {
-                _iCapterraRepository.AddProduct(item);
-                Console.WriteLine();
-            }
+            if (productData == null)
+                return null;
+            else
+                return productData;
+        }
+
+        public bool ImportData(List<CapterraModel> model)
+        {
+            var result = _iCapterraRepository.AddProduct(model);
+
+            return result;
         }
     }
 }

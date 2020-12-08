@@ -7,6 +7,6 @@ namespace ProductImport.Database.IRepository
 {
     public interface ISoftwareAdviceRepository
     {
-        public void AddProduct(SoftwareAdviceModel product);
+        public bool AddProduct(List<SoftwareAdviceModel> product);
     }
 }

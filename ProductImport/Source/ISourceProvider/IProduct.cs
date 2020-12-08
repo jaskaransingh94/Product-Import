@@ -5,8 +5,9 @@ using System.Text;
 
 namespace ProductImport.Source.ISourceProvider
 {
-    public interface IProduct
+    public interface IProduct<T>
     {
-        public void ReadAndImport(string path);
+        public List<T> ReadFile(string path);
+        public bool ImportData(List<T> model);
     }
 }

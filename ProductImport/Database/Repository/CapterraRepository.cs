@@ -16,12 +16,22 @@ namespace ProductImport.Database.Repository
         //    _mySqlContext = mySqlContext;
         //}
 
-        public void AddProduct(CapterraModel product)
+        public bool AddProduct(List<CapterraModel> product)
         {
-            Console.WriteLine("Importing:");
-            Console.WriteLine($"Name: {product.Name}");
-            Console.WriteLine($"Tags: {product.Tags}");
-            Console.WriteLine($"Twitter: {product.Twitter}");
+            if (product == null)
+                return false;
+            else
+            {
+                foreach (var item in product)
+                {
+                    Console.WriteLine("Importing:");
+                    Console.WriteLine($"Name: {item.Name}");
+                    Console.WriteLine($"Tags: {item.Tags}");
+                    Console.WriteLine($"Twitter: {item.Twitter}");
+                    Console.WriteLine();
+                }
+                return true;
+            }
         }
     }
 }

@@ -7,6 +7,6 @@ namespace ProductImport.Database.IRepository
 {
     public interface ICapterraRepository
     {
-        public void AddProduct(CapterraModel product);
+        public bool AddProduct(List<CapterraModel> product);
     }
 }

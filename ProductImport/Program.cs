@@ -35,25 +35,25 @@ namespace ProductImport
             //var path = "feed-products/capterra.yaml";
 
             //var source = "softwareadvice";
-            //var path = "feed-products/softwareadvice.json";
+            //var path = "feed-products/1.json";
 
             if (source.ToLower().Equals("capterra"))
             {
                 var serviceType = serviceProvider.GetService<Capterra>();
-                serviceType.ReadAndImport(path);
+                var list = serviceType.ReadFile(path);
+                serviceType.ImportData(list);
             }
             else if (source.ToLower().Equals("softwareadvice"))
             {
                 var serviceType = serviceProvider.GetService<SoftwareAdvice>();
-                serviceType.ReadAndImport(path);
+                var list = serviceType.ReadFile(path);
+                serviceType.ImportData(list);
             }
             else
             {
                 Console.WriteLine("Not a valid source");
                 return;
             }
-
-            //ProductImport.exe import softwareadvice feed-products/softwareadvice.json
         }
     }
 }

@@ -16,12 +16,23 @@ namespace ProductImport.Database.Repository
         //    _mySqlContext = mySqlContext;
         //}
 
-        public void AddProduct(SoftwareAdviceModel product)
+        public bool AddProduct(List<SoftwareAdviceModel> product)
         {
-            Console.WriteLine("Importing:");
-            Console.WriteLine($"Name: {product.Title}");
-            Console.WriteLine($"Categories: {String.Join(",", product.Categories)}");
-            Console.WriteLine($"Twitter: {product.Twitter}");
+            
+            if (product == null)
+                return false;
+            else
+            {
+                foreach (var item in product)
+                {
+                    Console.WriteLine("Importing:");
+                    Console.WriteLine($"Name: {item.Title}");
+                    Console.WriteLine($"Categories: {String.Join(",", item.Categories)}");
+                    Console.WriteLine($"Twitter: {item.Twitter}");
+                    Console.WriteLine();
+                }
+                return true;
+            }
         }
     }
 }
